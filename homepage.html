@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Dice it up!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src= "gamespace.js"></script>
+  <script type="text/javascript" src= "validation.js"></script>
+  
+  </head>
+<body>
+<audio id="clickSound" src="click.mp3" preload="auto"> </audio>
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand">Dice it up!</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="homeBtn"><a href="#home">Home</a></li>
+        <li id="loginBtn"><a href="#login">Login</a></li>
+        <li id="logoutBtn"><a href="#logout">Logout</a></li>
+        <li id="createAccountBtn"><a href="#createaccount">Create Account</a></li>
+        <li id="highscoreBtn"><a href="#highscores">Highscores</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- StartPage-->
+<div class="container-fluid bg-1" id="startPage">
+  <h3 class="margin">Dice it up!</h3>
+  <button class="button button2" id="playBtn">Play</button><br>
+              
+  <h4><i>A game of dice is like a box of chocolate, you never know what you gonna get</i></h4>
+</div> <!-- End StartPage -->
+
+<!-- Start LoginPage -->
+<div class="container-fluid bg-1" id="loginPage">
+  <h3 class="margin">Login</h3>
+  <form id='login_form' >
+  Email-adress:<br>
+  <div class="bg-2">
+  <input type='text' id='emailTxt' placeholder='Your email-adress..'><br>
+  </div>
+  Password:<br>
+  <div class="bg-2">
+  <input type= 'password' id='passwordLog' placeholder='Your password..'><br>
+  <input type='submit' id='submitBtn' value='Login'>
+  </div>
+  <div id="dangerBox">
+  </div>
+  </form>
+  </div> <!-- End LoginPage -->
+
+  <!-- Start RegisterPage -->
+<div class="container-fluid bg-1" id="registerPage">
+  <h3 class="margin">Register</h3>
+  <form id="register_form">
+  Firstname:<br>
+  <div class="bg-2">
+  <input type="text" id="firstname" placeholder="Your first name.."><br>
+  </div>
+  Lastname:<br>
+  <div class="bg-2">
+  <input type= "text" id = "lastname" placeholder="Your last name.."><br>
+  </div>
+  Email-adress:<br>
+  <div class="bg-2">
+  <input type="text" id="emailAdress" placeholder="Your email-adress.."><br>
+  </div>
+  Username:<br>
+  <div class="bg-2">
+  <input type="text" id="username" placeholder="Your desired username.."><br>
+  </div>
+  Password:<br>
+  <div class="bg-2">
+  <input type="password" id="passwordReg" placeholder="Your desired password.."><br>
+  </div>
+  <br>
+  <input type="submit" id="submitBtn2" value="Submit">
+  </form>
+  <div id="dangerBoxReg">
+  </div>
+  </div> <!-- End registerPage -->
+
+  <!-- Start HigscorePage -->
+  <div class="container-fluid bg-1" id="highscorePage">
+  <h3 class="margin">Global Highscores</h3>
+  <table class="container-table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Score</th>
+  </tr> 
+  </thead>
+  <tbody id="globalHs">
+  <!-- place to print out globalHs-->
+  </tbody>  
+  </table>
+            
+  <h3 class="margin">Own Highscores</h3>
+  <table class="container-table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Score</th> 
+  </tr>
+  </thead>
+  <tbody id="ownHs">
+  <!-- place to print out own highscores-->
+  </tbody>
+  </table>
+  </div> <!-- End HighscorePage -->
+
+  <!-- Start GamePage -->
+  <div class="container-fluid bg-1" id="gamePage">
+    <div class="dices">
+
+    
+      <div id = "die1" class = "dice" >0</div>
+      <div id = "die2" class = "dice">0</div>
+      <div id = "die3" class = "dice">0</div>
+      <div id = "die4" class = "dice">0</div> <br><br>
+      <h3 class="cover-heading">Round : <strong id="round">0</strong></h3>
+      <h3 class="cover-heading">Total Score : <strong id="totalscore">0</strong></h3>
+
+              
+      <button class="button button4" id="rollBtn">Roll your dices!</button>
+    </div>
+    <p>Enter a number between 3 and 18 to play with the other children. <br> If your guess is lower than the three first dices, your score is your guessed number times dice four, do this 10 times to get a score.</p>
+    <div class="bg-2">
+      <form>
+      <input id="guessedValue" type="number" min=3 max=18 required>
+      </form>
+    </div>
+      <p id="status"> </p>
+    <div id="highscoreResult"></div>
+ 
+  </div><!-- End GamePage -->
+
+  <!-- Start LogoutPage -->
+  <div class="container-fluid bg-1" id="signedOutPage">
+  <h2>You have been signed out.</h2>
+  <p><i> Klick if you are an addictive bastard and want to play more</i>.</p>
+  <button class="button button1" id="playAgainBtn">Play more</button>
+  </div> <!-- End LogoutPage -->
+
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p><i>Created by Tommy Claesson <br>
+  Jönköping University</i></p> 
+</footer>
+<script type="text/javascript"> hideShow('startPage');</script>
+
+</body>
+</html>
+
